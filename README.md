@@ -11,12 +11,12 @@ zauth is a 2FA (Two-Factor Authentication) application for terminal written in G
 
 ## Features
 - Supports both TOTP and HOTP codes.
-- Import data from existing app(s) (encrypted files supported) ([supported apps]()).
-- Export data to another app's format (exported file can be encrypted) ([supported apps]()).
+- Import data from existing app(s) (encrypted files supported) ([supported apps](https://github.com/grijul/zauth#supported-app-files-for-import)).
+- Export data to another app's format (exported file can be encrypted) ([supported apps](https://github.com/grijul/zauth#supported-app-files-for-export)).
 - Add new entries directly from CLI.
-- More upcoming features in [TODO]()
+- More upcoming features in [What's next](https://github.com/grijul/zauth#whats-next)
 
-*If you would like any other app to be supported, please [create an issue] and (if possible) provide an unencrypted sample backup file. Of course I am accepting pull requests as well :)*
+*If you would like any other app to be supported, please [create an issue](https://github.com/grijul/zauth/issues) and (if possible) provide an unencrypted sample backup file. Of course I am accepting pull requests as well :)*
 
 ## Installation
     $ go install github.com/grijul/zauth@latest
@@ -65,7 +65,7 @@ A prompt will be displayed to capture necessary details (secret, issuer, etc..).
 
 `-file` flag tells zauth which file to import
 
-`-type` flag tells zauth what type of file is being imported ([supported files]())
+`-type` flag tells zauth what type of file is being imported ([supported files](https://github.com/grijul/zauth#supported-app-files-for-import))
 
 
 ---
