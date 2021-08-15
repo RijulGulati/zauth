@@ -11,9 +11,11 @@ zauth is a 2FA (Two-Factor Authentication) application for terminal written in G
 
 ## Features
 - Supports both TOTP and HOTP codes.
-- Import data from existing app(s) (encrypted files supported) ([supported apps](https://github.com/grijul/zauth#supported-app-files-for-import)).
-- Export data to another app's format (exported file can be encrypted) ([supported apps](https://github.com/grijul/zauth#supported-app-files-for-export)).
 - Add new entries directly from CLI.
+    - support setting custom digits (default: 6)
+    - support setting a custom period (TOTP) (default: 30)
+    - support SHA1, SHA256 and SHA512 algorithms (TOTP)
+- Import/Export [andOTP](https://github.com/andOTP/andOTP) backups (encrypted files supported).
 - More upcoming features in [What's next](https://github.com/grijul/zauth#whats-next)
 
 *If you would like any other app to be supported, please [create an issue](https://github.com/grijul/zauth/issues) and (if possible) provide an unencrypted sample backup file. Of course I am accepting pull requests as well :)*
