@@ -12,6 +12,7 @@ import (
 	"github.com/grijul/zauth/internal/otp"
 	"github.com/grijul/zauth/internal/zauth"
 	"github.com/grijul/zauth/third_party"
+	"github.com/mattn/go-runewidth"
 	"github.com/rodaine/table"
 )
 
@@ -512,6 +513,7 @@ func printZAuthOtpTable() error {
 	tbl := table.New("ISSUER", "IDENTIFIER", "TYPE", "OTP", "REMAINING")
 
 	tbl.WithPadding(5)
+	tbl.WithWidthFunc(runewidth.StringWidth)
 
 	zl, err := common.ReadZAuthJson()
 	if err != nil {
