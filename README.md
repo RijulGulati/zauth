@@ -20,10 +20,70 @@ zauth is a 2FA (Two-Factor Authentication) application for terminal written in G
 
 *If you would like any other app to be supported, please [create an issue](https://github.com/grijul/zauth/issues) and (if possible) provide an unencrypted sample backup file. Of course I am accepting pull requests as well :)*
 
+
+
+---
+
+
+
 ## Installation
     $ go install github.com/grijul/zauth@latest
 
 By default, zauth stores it entries in `$HOME/.zauth` directory.
+
+### Using Docker
+
+zauth can be installed using docker as well. Running the following command pulls zauth image and runs `zauth -h` command.
+
+
+    $ docker run grijul/zauth:latest zauth -h
+
+
+You can bind container's `/root/.zauth` directory to your host's `$HOME/.zauth` directory to use zauth.json from your host system. Something like this should work:
+
+
+    $ docker run -v $HOME/.zauth:/root/.zauth zauth:latest zauth
+
+
+
+**Important Note:** There is only 1 docker image with `latest` tag on docker hub. Since there is no release cycle (as of now), I manually have to update the docker image whenever there are new commits. So the image is subject to be outdated and may not contain latest changes/fixes. I will try to update the image as frequently as possible.
+
+If latest changes are desired, you can [build docker image from source]() (it's easier than it sounds).
+
+
+
+---
+
+
+
+## Building from source
+* Clone repository and cd into dir
+
+        $ git clone https://github.com/grijul/zauth.git && cd zauth
+
+* Build using `go build` command
+        
+        $ go build .
+
+### Building docker image from source
+1. Clone repository and cd into dir
+
+        $ git clone https://github.com/grijul/zauth.git && cd zauth
+
+
+2. Build docker image
+    
+        $ docker build -t zauth:latest .
+
+3. Run docker image
+        
+        $ docker run zauth:latest zauth -h
+
+
+
+---
+
+
 
 ## Examples
 
@@ -123,5 +183,5 @@ Feel free to get in touch with me via [Twitter](https://twitter.com/grijul) or [
 
 
 ## License
-[MIT]()
+[MIT](https://github.com/grijul/zauth/blob/main/LICENSE)
 

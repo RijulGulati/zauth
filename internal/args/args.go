@@ -89,7 +89,7 @@ func ParseArgs(zc common.ZAuthCommonComp) error {
 	entryList := entryCmd.Bool("list", false, "List all entries")
 
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: %s <command>\n\n%v\n", os.Args[0], usage)
+		fmt.Fprintf(os.Stderr, "Usage: %s [COMMAND]\n\n%v\n", os.Args[0], usage)
 	}
 
 	flag.Parse()
