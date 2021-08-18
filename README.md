@@ -48,7 +48,7 @@ You can bind container's `/root/.zauth` directory to your host's `$HOME/.zauth` 
 
 **Important Note:** There is only 1 docker image with `latest` tag on docker hub. Since there is no release cycle (as of now), I manually have to update the docker image whenever there are new commits. So the image is subject to be outdated and may not contain latest changes/fixes. I will try to update the image as frequently as possible.
 
-If latest changes are desired, you can [build docker image from source]() (it's easier than it sounds).
+If latest changes are desired, you can [build docker image from source](https://github.com/grijul/zauth#building-docker-image-from-source) (it's easier than it sounds).
 
 
 
