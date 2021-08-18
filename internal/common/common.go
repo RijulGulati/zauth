@@ -7,7 +7,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"path"
+	"path/filepath"
 	"syscall"
 	"time"
 
@@ -58,7 +58,7 @@ func WriteFile(d []byte, f string) (string, error) {
 		return "", err
 	}
 
-	fl := path.Join(zauth.ZAuthJsonDir, f)
+	fl := filepath.Join(zauth.ZAuthJsonDir, f)
 	return fl, os.WriteFile(fl, d, 0644)
 }
 
@@ -113,7 +113,7 @@ func ReadZAuthJson() ([]zauth.ZAuth, error) {
 }
 
 func (zc *ZAuthCommon) ReadPassword() (string, error) {
-	pass, err := term.ReadPassword(syscall.Stdin)
+	pass, err := term.ReadPassword(int(syscall.Stdin))
 	if err != nil {
 		msg := fmt.Sprintf("error reading password: %v", err)
 		fmt.Fprintf(flag.CommandLine.Output(), "%s\n", msg)
