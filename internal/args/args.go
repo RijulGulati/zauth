@@ -12,6 +12,7 @@ import (
 	"github.com/grijul/zauth/internal/otp"
 	"github.com/grijul/zauth/internal/zauth"
 	"github.com/grijul/zauth/third_party"
+	"github.com/mattn/go-runewidth"
 	"github.com/rodaine/table"
 )
 
@@ -346,10 +347,10 @@ func (za *ZAuthArgsEntry) ReadSecret(zc common.ZAuthCommonComp) (string, error) 
 			return "", err
 		}
 
-		if sec == "\n" {
+		sec = strings.TrimSpace(sec)
+		if sec == "" {
 			fmt.Fprint(flag.CommandLine.Output(), "secret cannot be empty\n")
 		} else {
-			sec = sec[:len(sec)-1]
 			_, err := base32.StdEncoding.DecodeString(sec)
 			if err != nil {
 				fmt.Fprint(flag.CommandLine.Output(), "invalid base32 secret. please try again.\n")
@@ -368,10 +369,10 @@ func (za *ZAuthArgsEntry) ReadIssuer(zc common.ZAuthCommonComp) (string, error) 
 			return "", err
 		}
 
-		if iss == "\n" {
+		iss = strings.TrimSpace(iss)
+		if iss == "" {
 			fmt.Fprint(flag.CommandLine.Output(), "issuer cannot be empty\n")
 		} else {
-			iss = iss[:len(iss)-1]
 			return iss, nil
 		}
 	}
@@ -384,10 +385,10 @@ func (za *ZAuthArgsEntry) ReadIdentifier(zc common.ZAuthCommonComp) (string, err
 		if err != nil {
 			return "", err
 		}
-		if acc == "\n" {
+		acc = strings.TrimSpace(acc)
+		if acc == "" {
 			fmt.Fprint(flag.CommandLine.Output(), "identifier cannot be empty\n")
 		} else {
-			acc = acc[:len(acc)-1]
 			return acc, nil
 		}
 	}
@@ -401,13 +402,12 @@ func (za *ZAuthArgsEntry) ReadType(zc common.ZAuthCommonComp) (string, error) {
 			return "", err
 		}
 
-		if typ == "\n" {
+		typ = strings.TrimSpace(typ)
+		if typ == "" {
 			return zauth.DefaultType, nil
 		}
 
-		typ = typ[:len(typ)-1]
 		t := strings.ToLower(typ)
-
 		if t == "totp" || t == "hotp" {
 			return t, nil
 		} else {
@@ -424,11 +424,11 @@ func (za *ZAuthArgsEntry) ReadDigits(zc common.ZAuthCommonComp) (int, error) {
 			return 0, err
 		}
 
-		if sdig == "\n" {
+		sdig = strings.TrimSpace(sdig)
+		if sdig == "" {
 			return zauth.DefaultDigits, nil
 		}
 
-		sdig = sdig[:len(sdig)-1]
 		dig, err := strconv.Atoi(sdig)
 		if err != nil {
 			fmt.Fprint(flag.CommandLine.Output(), "bad input\n")
@@ -446,15 +446,14 @@ func (za *ZAuthArgsEntry) ReadAlgorithm(zc common.ZAuthCommonComp) (string, erro
 			return "", err
 		}
 
-		if algo == "\n" {
+		algo = strings.TrimSpace(algo)
+		if algo == "" {
 			return zauth.DefaultAlgo, nil
 		}
 
-		algo = algo[:len(algo)-1]
-		a := strings.ToLower(algo)
-
-		if a == "sha1" || a == "sha256" || a == "sha512" {
-			return a, nil
+		algo = strings.ToLower(algo)
+		if algo == "sha1" || algo == "sha256" || algo == "sha512" {
+			return algo, nil
 		} else {
 			fmt.Fprint(flag.CommandLine.Output(), "bad input\n")
 		}
@@ -470,10 +469,10 @@ func (za *ZAuthArgsEntry) ReadPeriod(zc common.ZAuthCommonComp) (int64, error) {
 			return 0, err
 		}
 
-		if sper == "\n" {
+		sper = strings.TrimSpace(sper)
+		if sper == "" {
 			return zauth.DefaultPeriod, nil
 		}
-		sper = sper[:len(sper)-1]
 		per, err := strconv.ParseInt(sper, 10, 64)
 		if err != nil {
 			fmt.Fprint(flag.CommandLine.Output(), "bad input\n")
@@ -491,11 +490,10 @@ func (za *ZAuthArgsEntry) ReadCounter(zc common.ZAuthCommonComp) (int64, error) 
 			return 0, err
 		}
 
-		if sctr == "\n" {
+		sctr = strings.TrimSpace(sctr)
+		if sctr == "" {
 			return zauth.DefaultCounter, nil
 		}
-
-		sctr = sctr[:len(sctr)-1]
 
 		ctr, err := strconv.ParseInt(sctr, 10, 64)
 		if err != nil {
@@ -515,6 +513,7 @@ func printZAuthOtpTable() error {
 	tbl := table.New("ISSUER", "IDENTIFIER", "TYPE", "OTP", "REMAINING")
 
 	tbl.WithPadding(5)
+	tbl.WithWidthFunc(runewidth.StringWidth)
 
 	zl, err := common.ReadZAuthJson()
 	if err != nil {

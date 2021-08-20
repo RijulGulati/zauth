@@ -3,15 +3,15 @@ package test
 import (
 	"fmt"
 	"os"
-	"path"
+	"path/filepath"
 	"runtime"
 )
 
 var TestDir = getTestDir()
-var TestAndotpAccountsJson = path.Join(TestDir, "andotp_accounts.json")
-var TestAndotpAccountsJsonEnc = path.Join(TestDir, "andotp_accounts.json.enc")
-var TestZAuthJsonDir = path.Join(os.TempDir(), "zauth")
-var TestZAuthJson = path.Join(TestZAuthJsonDir, "zauth.json")
+var TestAndotpAccountsJson = filepath.Join(TestDir, "andotp_accounts.json")
+var TestAndotpAccountsJsonEnc = filepath.Join(TestDir, "andotp_accounts.json.enc")
+var TestZAuthJsonDir = filepath.Join(os.TempDir(), "zauth")
+var TestZAuthJson = filepath.Join(TestZAuthJsonDir, "zauth.json")
 var AndOtpAccountsEncPassword = "testpass"
 
 func getTestDir() string {
@@ -21,7 +21,7 @@ func getTestDir() string {
 		os.Exit(1)
 	}
 
-	return path.Dir(fn)
+	return filepath.Dir(fn)
 }
 
 func RemoveTestFiles() {

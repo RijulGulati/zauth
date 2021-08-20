@@ -2,7 +2,8 @@ package zauth
 
 import (
 	"os"
-	"path"
+	"path/filepath"
+	"runtime"
 )
 
 type ZAuth struct {
@@ -28,5 +29,12 @@ const DefaultCounter = 0
 const DefaultAlgo = "sha1"
 const DefaultPeriod = 30
 
-var ZAuthJsonDir string = path.Join(os.Getenv("HOME"), ".zauth")
-var ZAuthJson string = path.Join(ZAuthJsonDir, "zauth.json")
+var ZAuthJsonDir string = filepath.Join(homeDir(), ".zauth")
+var ZAuthJson string = filepath.Join(ZAuthJsonDir, "zauth.json")
+
+func homeDir() string {
+	if runtime.GOOS == "windows" {
+		return os.Getenv("USERPROFILE")
+	}
+	return os.Getenv("HOME")
+}
