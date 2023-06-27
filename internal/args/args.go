@@ -347,7 +347,7 @@ func (za *ZAuthArgsEntry) ReadSecret(zc common.ZAuthCommonComp) (string, error) 
 			return "", err
 		}
 
-		sec = strings.TrimSpace(sec)
+		sec = strings.ReplaceAll(strings.TrimSpace(sec), " ", "")
 		if sec == "" {
 			fmt.Fprint(flag.CommandLine.Output(), "secret cannot be empty\n")
 		} else {
