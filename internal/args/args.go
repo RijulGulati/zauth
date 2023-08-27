@@ -64,7 +64,8 @@ type ZAuthArgsEntryInput interface {
 const usage = `COMMANDS:
   entry			zauth entry operations (add/edit/delete/list) (see zauth entry --help)
   import		import file(s) to zauth (see zauth import --help)
-  export		export zauth entries to file (see zauth export --help)`
+  export		export zauth entries to file (see zauth export --help)
+  otp			zauth otp get code from entry name`
 
 func ParseArgs(zc common.ZAuthCommonComp) error {
 	var msg string
@@ -89,6 +90,10 @@ func ParseArgs(zc common.ZAuthCommonComp) error {
 	entryDelete := entryCmd.Bool("delete", false, "Delete existing entry")
 	entryList := entryCmd.Bool("list", false, "List all entries")
 
+	// otp cmd
+	otpCmd := flag.NewFlagSet("otp", flag.ExitOnError)
+	issuerLabel := otpCmd.String("get", "", "get otp code from issuer label")
+
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: %s [COMMAND]\n\n%v\n", os.Args[0], usage)
 	}
@@ -99,6 +104,29 @@ func ParseArgs(zc common.ZAuthCommonComp) error {
 		return printZAuthOtpTable()
 	} else {
 		switch os.Args[1] {
+		case "otp":
+
+			otpCmd.Parse(os.Args[2:])
+			lst, err := common.ReadZAuthJson()
+			if err != nil {
+				msg = fmt.Sprintf("An error occured while listing entries to get entry %s: %v", *issuerLabel, err)
+				fmt.Fprintf(flag.CommandLine.Output(), "%s\n", msg)
+				return fmt.Errorf(msg)
+			}
+			for _, z := range lst {
+
+				if z.Issuer == *issuerLabel {
+					otp, err := otp.GenerateOTP(&z)
+					if err != nil {
+						return err
+					}
+					fmt.Println(otp.Otp)
+					return nil
+				}
+			}
+			msg = fmt.Sprintf("%s not found", *issuerLabel)
+			fmt.Fprintf(flag.CommandLine.Output(), "%s\n", msg)
+			return fmt.Errorf(msg)
 		case "import":
 			{
 				var pwd string

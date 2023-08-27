@@ -251,6 +251,21 @@ func TestParseEntryArgs(t *testing.T) {
 		t.Fatal("expected test to fail since functionality is not yet implemented")
 	}
 }
+func TestParseOtpArgs(t *testing.T) {
+	defer test.RemoveTestFiles()
+
+	// import sample file to create zauth json file. The file will then be exported
+	os.Args = []string{"zauth", "import", "-type=andotp", fmt.Sprintf("-file=%s", test.TestAndotpAccountsJson)}
+	ParseArgs(zc)
+	//otp get
+	zauth.ZAuthJson = test.TestZAuthJson
+	os.Args = []string{"zauth", "otp", "-get", "Some Org"}
+	err := ParseArgs(zc)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+}
 
 func (*zauthCommonTest) ReadPassword() (string, error) {
 	if isEmptyPassword {
