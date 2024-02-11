@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"os"
 
-	ga "github.com/grijul/go-andotp/andotp"
-	"github.com/grijul/zauth/internal/common"
-	"github.com/grijul/zauth/internal/zauth"
+	ga "github.com/rijulgulati/go-andotp/andotp"
+	"github.com/rijulgulati/zauth/internal/common"
+	"github.com/rijulgulati/zauth/internal/zauth"
 )
 
 type andotpNode struct {

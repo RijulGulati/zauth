@@ -3,7 +3,7 @@ package otp
 import (
 	"testing"
 
-	"github.com/grijul/zauth/internal/oauthurl"
+	"github.com/rijulgulati/zauth/internal/oauthurl"
 )
 
 func TestGenerateOTP(t *testing.T) {

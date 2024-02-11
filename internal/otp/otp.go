@@ -4,8 +4,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grijul/otpgen"
-	"github.com/grijul/zauth/internal/zauth"
+	"github.com/rijulgulati/otpgen"
+	"github.com/rijulgulati/zauth/internal/zauth"
 )
 
 // GenerateOTP generates TOTP/HOTP code and returns pointer to ZAuthOtp object and any errors encountered.

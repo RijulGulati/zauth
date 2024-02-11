@@ -16,9 +16,9 @@ zauth is a 2FA (Two-Factor Authentication) application for terminal written in G
     - support setting a custom period (TOTP) (default: 30)
     - support SHA1, SHA256 and SHA512 algorithms (TOTP)
 - Import/Export [andOTP](https://github.com/andOTP/andOTP) backups (encrypted files supported).
-- More upcoming features in [What's next](https://github.com/grijul/zauth#whats-next)
+- More upcoming features in [What's next](https://github.com/rijulgulati/zauth#whats-next)
 
-*If you would like any other app to be supported, please [create an issue](https://github.com/grijul/zauth/issues) and (if possible) provide an unencrypted sample backup file. Of course I am accepting pull requests as well :)*
+*If you would like any other app to be supported, please [create an issue](https://github.com/rijulgulati/zauth/issues) and (if possible) provide an unencrypted sample backup file. Of course I am accepting pull requests as well :)*
 
 
 
@@ -27,7 +27,7 @@ zauth is a 2FA (Two-Factor Authentication) application for terminal written in G
 
 
 ## Installation
-    $ go install github.com/grijul/zauth@latest
+    $ go install github.com/rijulgulati/zauth@latest
 
 By default, zauth stores it entries in `$HOME/.zauth` directory.
 
@@ -36,7 +36,7 @@ By default, zauth stores it entries in `$HOME/.zauth` directory.
 zauth can be installed using docker as well. Running the following command pulls zauth image and runs `zauth -h` command.
 
 
-    $ docker run grijul/zauth:latest zauth -h
+    $ docker run rijulgulati/zauth:latest zauth -h
 
 
 You can bind container's `/root/.zauth` directory to your host's `$HOME/.zauth` directory to use zauth.json from your host system. Something like this should work:
@@ -48,7 +48,7 @@ You can bind container's `/root/.zauth` directory to your host's `$HOME/.zauth` 
 
 **Important Note:** There is only 1 docker image with `latest` tag on docker hub. Since there is no release cycle (as of now), I manually have to update the docker image whenever there are new commits. So the image is subject to be outdated and may not contain latest changes/fixes. I will try to update the image as frequently as possible.
 
-If latest changes are desired, you can [build docker image from source](https://github.com/grijul/zauth#building-docker-image-from-source) (it's easier than it sounds).
+If latest changes are desired, you can [build docker image from source](https://github.com/rijulgulati/zauth#building-docker-image-from-source) (it's easier than it sounds).
 
 
 
@@ -59,7 +59,7 @@ If latest changes are desired, you can [build docker image from source](https://
 ## Building from source
 * Clone repository and cd into dir
 
-        $ git clone https://github.com/grijul/zauth.git && cd zauth
+        $ git clone https://github.com/rijulgulati/zauth.git && cd zauth
 
 * Build using `go build` command
         
@@ -68,7 +68,7 @@ If latest changes are desired, you can [build docker image from source](https://
 ### Building docker image from source
 1. Clone repository and cd into dir
 
-        $ git clone https://github.com/grijul/zauth.git && cd zauth
+        $ git clone https://github.com/rijulgulati/zauth.git && cd zauth
 
 
 2. Build docker image
@@ -127,7 +127,7 @@ A prompt will be displayed to capture necessary details (secret, issuer, etc..).
 
 `-file` flag tells zauth which file to import
 
-`-type` flag tells zauth what type of file is being imported ([supported files](https://github.com/grijul/zauth#supported-app-files-for-import))
+`-type` flag tells zauth what type of file is being imported ([supported files](https://github.com/rijulgulati/zauth#supported-app-files-for-import))
 
 
 ---
@@ -179,9 +179,9 @@ The file exported (encrypted/decrypted) is compatible with `export_type` app. Th
 - Edit/Delete entries from CLI.
 
 ## Contact
-Feel free to get in touch with me via [Twitter](https://twitter.com/grijul) or [Email](mailto:grijul@protonmail.ch).
+Feel free to get in touch with me via [Twitter](https://twitter.com/rijulgulati) or [Email](mailto:rijulgulati@protonmail.ch).
 
 
 ## License
-[MIT](https://github.com/grijul/zauth/blob/main/LICENSE)
+[MIT](https://github.com/rijulgulati/zauth/blob/main/LICENSE)
 

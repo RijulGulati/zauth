@@ -8,11 +8,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/grijul/zauth/internal/common"
-	"github.com/grijul/zauth/internal/otp"
-	"github.com/grijul/zauth/internal/zauth"
-	"github.com/grijul/zauth/third_party"
 	"github.com/mattn/go-runewidth"
+	"github.com/rijulgulati/zauth/internal/common"
+	"github.com/rijulgulati/zauth/internal/otp"
+	"github.com/rijulgulati/zauth/internal/zauth"
+	"github.com/rijulgulati/zauth/third_party"
 	"github.com/rodaine/table"
 )
 

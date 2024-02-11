@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/grijul/zauth/internal/zauth"
+	"github.com/rijulgulati/zauth/internal/zauth"
 	"golang.org/x/term"
 )
 

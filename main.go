@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/grijul/zauth/internal/args"
-	"github.com/grijul/zauth/internal/common"
+	"github.com/rijulgulati/zauth/internal/args"
+	"github.com/rijulgulati/zauth/internal/common"
 )
 
 func main() {

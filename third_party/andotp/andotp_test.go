@@ -4,8 +4,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/grijul/zauth/internal/zauth"
-	"github.com/grijul/zauth/test"
+	"github.com/rijulgulati/zauth/internal/zauth"
+	"github.com/rijulgulati/zauth/test"
 )
 
 func init() {

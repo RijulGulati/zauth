@@ -3,7 +3,7 @@ package third_party
 import (
 	"fmt"
 
-	"github.com/grijul/zauth/third_party/andotp"
+	"github.com/rijulgulati/zauth/third_party/andotp"
 )
 
 var SupportedExportTypes = []string{"andotp"}

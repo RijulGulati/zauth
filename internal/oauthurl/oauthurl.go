@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/grijul/zauth/internal/zauth"
+	"github.com/rijulgulati/zauth/internal/zauth"
 )
 
 func Parse(u string) (*zauth.ZAuth, error) {
